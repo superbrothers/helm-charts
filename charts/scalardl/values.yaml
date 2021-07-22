@@ -101,6 +101,10 @@ envoy:
   # envoy.affinity -- the affinity/anti-affinity feature, greatly expands the types of constraints you can express
   affinity: {}
 
+  dashboard:
+    enabled: false
+    namespace: monitoring
+
 ledger:
   # ledger.replicaCount -- number of replicas to deploy
   replicaCount: 3
