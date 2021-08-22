@@ -9,6 +9,12 @@ nameOverride: ""
 fullnameOverride: ""
 
 envoy:
+  # envoy.enabled -- enable envoy
+  enable: true
+
+  # envoy.nameOverride -- override envoy chart name
+  nameOverride: scalardl
+
   # envoy.replicaCount -- number of replicas to deploy
   replicaCount: 3
 
@@ -84,9 +90,9 @@ envoy:
     namespace: monitoring
 
   grafanaDashboard:
-    # ledger.grafanaDashboard.enabled -- enable grafana dashboard
+    # envoy.grafanaDashboard.enabled -- enable grafana dashboard
     enabled: false
-    # ledger.grafanaDashboard.namespace -- which namespace grafana dashboard is located. by default monitoring
+    # envoy.grafanaDashboard.namespace -- which namespace grafana dashboard is located. by default monitoring
     namespace: monitoring
 
   # envoy.resources -- resources allowed to the pod
