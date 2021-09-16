@@ -9,6 +9,9 @@ nameOverride: ""
 fullnameOverride: ""
 
 envoy:
+  enabled: true
+  nameOverride: scalardl-ledger
+
   # -- number of replicas to deploy
   replicaCount: 3
 
