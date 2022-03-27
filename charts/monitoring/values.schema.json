@@ -1,0 +1,229 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "kube-prometheus-stack": {
+            "type": "object",
+            "properties": {
+                "alertmanager": {
+                    "type": "object",
+                    "properties": {
+                        "alertmanagerConfigNamespaceSelector": {
+                            "type": "null"
+                        },
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "coreDns": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "defaultRules": {
+                    "type": "object",
+                    "properties": {
+                        "create": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "grafana": {
+                    "type": "object",
+                    "properties": {
+                        "defaultDashboardsEnabled": {
+                            "type": "boolean"
+                        },
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "sidecar": {
+                            "type": "object",
+                            "properties": {
+                                "dashboards": {
+                                    "type": "object",
+                                    "properties": {
+                                        "enabled": {
+                                            "type": "boolean"
+                                        },
+                                        "label": {
+                                            "type": "string"
+                                        },
+                                        "labelValue": {
+                                            "type": "string"
+                                        }
+                                    }
+                                },
+                                "resources": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "kubeApiServer": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubeControllerManager": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubeEtcd": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubeProxy": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubeScheduler": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubeStateMetrics": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "kubelet": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "namespaceOverride": {
+                    "type": "string"
+                },
+                "nodeExporter": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        }
+                    }
+                },
+                "prometheus": {
+                    "type": "object",
+                    "properties": {
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "prometheusSpec": {
+                            "type": "object",
+                            "properties": {
+                                "podMonitorNamespaceSelector": {
+                                    "type": "object"
+                                },
+                                "podMonitorSelectorNilUsesHelmValues": {
+                                    "type": "boolean"
+                                },
+                                "probeNamespaceSelector": {
+                                    "type": "object"
+                                },
+                                "probeSelectorNilUsesHelmValues": {
+                                    "type": "boolean"
+                                },
+                                "resources": {
+                                    "type": "object"
+                                },
+                                "ruleNamespaceSelector": {
+                                    "type": "object"
+                                },
+                                "ruleSelectorNilUsesHelmValues": {
+                                    "type": "boolean"
+                                },
+                                "serviceMonitorNamespaceSelector": {
+                                    "type": "object"
+                                },
+                                "serviceMonitorSelectorNilUsesHelmValues": {
+                                    "type": "boolean"
+                                },
+                                "storageSpec": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "prometheusOperator": {
+                    "type": "object",
+                    "properties": {
+                        "admissionWebhooks": {
+                            "type": "object",
+                            "properties": {
+                                "patch": {
+                                    "type": "object",
+                                    "properties": {
+                                        "resources": {
+                                            "type": "object"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "kubeletService": {
+                            "type": "object",
+                            "properties": {
+                                "enabled": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "namespaces": {
+                            "type": "object",
+                            "properties": {
+                                "releaseNamespace": {
+                                    "type": "boolean"
+                                }
+                            }
+                        },
+                        "resources": {
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "kubePrometheusStack": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            }
+        }
+    }
+}
