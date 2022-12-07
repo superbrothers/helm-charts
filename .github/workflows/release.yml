@@ -2,38 +2,28 @@ name: Release Charts
 
 on:
   push:
-    branches:
-      - 'prepare-release-v*'
+    tags: ["**"]
 
 jobs:
   release:
     runs-on: ubuntu-latest
-    env:
-      HELM_VERSION: v3.5.2
-
     steps:
+      - name: Get the chart name and version from the tag
+        uses: actions/github-script@v6
+        id: info
+        with:
+          script: |
+            const tag = process.env.GITHUB_REF_NAME
+            const matches = tag.match(/^(.+)-([0-9]+\.[0-9]+\.[0-9]+)$/)
+            core.setOutput('name', matches[0])
+            core.setOutput('version', matches[1])
+
       - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
+        uses: actions/checkout@v3
 
-      - name: Configure Git
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Install Helm
-        uses: azure/setup-helm@v1
-        with:
-          version: ${{ env.HELM_VERSION }}
-
-      - name: Add Helm repos
-        run: |
-          helm repo add scalar https://scalar-labs.github.io/helm-charts
-
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+      - name: Publish Helm chart
+        uses: superbrothers/helm-gh-pages@chart_dir
         env:
-          CR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CR_PAGES_BRANCH: main
-          CR_SKIP_EXISTING: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          chart_dir: charts/${{steps.info.outputs.name}}
+          chart_version: ${{steps.info.outputs.version}}
