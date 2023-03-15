@@ -17,8 +17,6 @@ spec:
   {{- end }}
   template:
     metadata:
-      annotations:
-        checksum/config: {{ include (print $.Template.BasePath "/ledger/configmap.yaml") . | sha256sum }}
       labels:
         {{- include "scalardl-ledger.selectorLabels" . | nindent 8 }}
     spec:
@@ -39,7 +37,7 @@ spec:
       {{- end }}
         - name: scalardl-ledger-properties-volume
           configMap:
-            name: {{ include "scalardl.fullname" . }}-ledger-properties
+            name: {{ include "scalardl-ledger.configmapNameLedgerProperties" . }}
       {{- with .Values.ledger.extraVolumes }}
         {{- toYaml . | nindent 8 }}
       {{- end }}

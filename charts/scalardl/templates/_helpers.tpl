@@ -51,3 +51,10 @@ app.kubernetes.io/name: {{ include "scalardl.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/app: ledger
 {{- end }}
+
+{{/*
+Create the name of the configmap for ledger properties
+*/}}
+{{- define "scalardl-ledger.configmapNameLedgerProperties" -}}
+{{ include "scalardl.fullname" . }}-ledger-properties-{{ sha256sum .Values.ledger.ledgerProperties | substr 0 10 }}
+{{- end }}
